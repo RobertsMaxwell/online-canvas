@@ -31,7 +31,7 @@ function Canvas () {
     const colors = [{img: red, value: "#FF0000"}, {img: green, value: "#00FF00"}, {img: blue, value: "#0000FF"}, {img: white, value: "#FFFFFF"}, {img: black, value: "#000000"}]
     const canv = useRef()
     const grid = 30;
-    const cooldownMS = 30000;
+    const cooldownMS = 2000;
 
     const app = initializeApp(firebaseConfig)
     const auth = getAuth(app)
