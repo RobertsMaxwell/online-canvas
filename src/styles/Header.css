@@ -14,7 +14,13 @@
     display: flex;
     align-items: center;
     padding-left: 20px;
+    background-color: #32292F;
     flex: 1;
+}
+
+.header > div:hover {
+    cursor: pointer;
+    filter: brightness(.9);
 }
 
 .header .selected {
