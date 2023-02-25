@@ -1,0 +1,54 @@
+.canvas {
+    display: flex;
+    min-height: calc(90vh);
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
+.canvas h1 {
+    font-size: min(12vw, 60px);
+}
+
+.canvas p {
+    font-size: min(5vw, 25px);
+}
+
+.canvas #canvas {
+    aspect-ratio: 1 / 1;
+    width: 30%;
+    min-width: 300px;
+    max-width: 1000px;
+}
+
+.canvas .colors {
+    display: flex;
+    width: 30%;
+    flex-wrap: wrap;
+    min-width: 300px;
+    max-width: 1000px;
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+.canvas .colors > div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas .colors input {
+    height: max(40px, 3vw);
+    border-radius: 5px;
+}
+
+.canvas .colors .color_selected {
+    border: 2px solid gold;
+}
+
+.canvas button {
+    margin-top: 20px;
+}

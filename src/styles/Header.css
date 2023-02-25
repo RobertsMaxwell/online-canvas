@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Rubik&family=Signika+Negative:wght@500&display=swap');
+
+.header {
+    display: flex;
+    min-height: 75px;
+    max-height: 200px;
+    height: 9vh;
+    font-size: max(25px, 1.2vw);
+    letter-spacing: .5px;
+    font-family: 'Signika Negative', sans-serif;
+}
+
+.header > div {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    flex: 1;
+}
+
+.header .selected {
+    background-color: #555254;
+}
