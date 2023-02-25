@@ -21,6 +21,7 @@
     width: 30%;
     min-width: 300px;
     max-width: 1000px;
+    border: 2px solid black;
 }
 
 .canvas .colors {
@@ -30,7 +31,7 @@
     min-width: 300px;
     max-width: 1000px;
     margin-top: 20px;
-    padding-bottom: 5px;
+    padding: 2px;
 }
 
 .canvas .colors > div {
