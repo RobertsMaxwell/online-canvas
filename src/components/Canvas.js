@@ -11,6 +11,8 @@ import blue from "../images/blue.png";
 import white from "../images/white.png";
 import black from "../images/black.png";
 
+import spinner from "../images/spinner.gif";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCbDBtKdClp4DMx5CazNhlWehout_VnsUg",
   authDomain: "canvas-445b1.firebaseapp.com",
@@ -27,6 +29,7 @@ function Canvas () {
     const [gridValues, setGridValues] = useState(null)
     const [lastPlace, setLastPlace] = useState(0)
     const [currentTime, setCurrentTime] = useState(Date.now())
+    const [loading, setLoading] = useState(false)
 
     const colors = [{img: red, value: "#FF0000"}, {img: green, value: "#00FF00"}, {img: blue, value: "#0000FF"}, {img: white, value: "#FFFFFF"}, {img: black, value: "#000000"}]
     const canv = useRef()
@@ -50,11 +53,14 @@ function Canvas () {
     }
 
     useEffect(() => {
-        draw({color: "#FFFFFF"}, true)
-
         if (gridValues === null) {
+            setLoading(true)
             return
         }
+
+        setLoading(false)
+
+        draw({color: "#FFFFFF"}, true)
 
         for (const val in gridValues) {
             draw(gridValues[val])
@@ -106,17 +112,18 @@ function Canvas () {
             <h1>Place a Pixel</h1>
             <p>{`${selected === null ? "Select a coordinate on the canvas" : `Selected coordinate: (${selected.x}, ${selected.y})`}`}</p>
 
-            <div className="colors">
+            {loading ? <div className="spinner"><img src={spinner} alt="spinner" /></div> : <></>}
+            <div className={`colors ${loading ? "hidden" : ""}`}>
                 {colors.map((ele, i) => <div key={i}><input className={`${color === ele.value ? "color_selected" : ""}`} onClick={() => {setColor(ele.value)}} type="image" src={ele.img} alt="color" /></div>)}
             </div>
-            <canvas ref={canv} id="canvas" width="600" height="600" onClick={e => {
+            <canvas ref={canv} className={`${loading ? "hidden" : ""}`} id="canvas" width="600" height="600" onClick={e => {
                 const rect = canv.current.getBoundingClientRect()
                 const units = rect.width / grid;
                 const x = Math.floor((e.clientX - rect.left) / units)
                 const y = Math.floor((e.clientY - rect.top) / units)
 
                 setSelected({x: x, y: y})
-            }}/>
+            }} />
 
             <button disabled={selected === null || currentTime - lastPlace < cooldownMS} onClick={() => {
                 const canvDbRef = ref(db, "canvas/" + selected.x + "," + selected.y)
